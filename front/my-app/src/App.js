@@ -4,7 +4,7 @@ import './App.css';
 import { Reset } from 'styled-reset'
 
 import Header from './component/header/Header';
-import Main from './component/Main';
+import Main from './component/main/Main';
 import Menu1 from './component/menu1';
 import Menu2 from './component/menu2';
 import Menu3 from './component/menu3';

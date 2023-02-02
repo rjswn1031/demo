@@ -1,0 +1,8 @@
+#mainContainer {
+    display: grid;
+    grid-template-columns: 4fr 1.3fr 2fr;
+    grid-gap: 2rem;
+}
+
+#mainContainer > div { background-color: #fff; border-radius: 0.5rem; }
+#mainContainer > div > p { padding: 1.7rem 2rem; font-size: 1.3rem; }

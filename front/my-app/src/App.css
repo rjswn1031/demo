@@ -1,6 +1,6 @@
 .App { display: flex; flex-direction: column; width: 100vw; height: 100vh; font-family: "NanumSquare"; }
 .App div { box-sizing: border-box; }
-.App > div:not(.header) { flex: 1 0 0; /* margin-top: 5px; */ background-color: rgb(250,252,254); }
+.App > div:not(.header) { flex: 1 0 0; padding: 2rem; background-color: rgb(243,245,248); }
 
 a:link, 
 a:visited { color: #fff; text-decoration: none; }
