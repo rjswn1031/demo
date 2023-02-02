@@ -3,7 +3,7 @@ import '../../css/main.css'
 
 function Map(props) {
     return (
-        <div id='mapContainer'>
+        <div id='mapContainer' className='card'>
         </div>
     );
 }

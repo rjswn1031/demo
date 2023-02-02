@@ -14,7 +14,7 @@ const Header = () => {
         {title: 'menu5', url: '/menu5'}
     ];
 
-    const [lists, setLists] = useState(menuList);
+    const [lists] = useState(menuList);
 
     return (
         <div id="headerContainer" className="header">
