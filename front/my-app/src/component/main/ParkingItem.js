@@ -8,11 +8,11 @@ ParkingItem.propTypes = {
 function ParkingItem(props) {
     return (
         <tr>
-            <td>{props.parkInfo.authType}</td>
-            <td>{props.parkInfo.plcType}</td>
-            <td>{props.parkInfo.title}</td>
-            <td>{props.parkInfo.addr}</td>
-            <td>{props.parkInfo.isPay}</td>
+            <td>{props.parkInfo.prkplceSe}</td>
+            <td>{props.parkInfo.prkplceType}</td>
+            <td>{props.parkInfo.prkplceNm}</td>
+            <td>{props.parkInfo.lnmAdr}</td>
+            <td>{props.parkInfo.parkingChrgeInfo}</td>
         </tr>
     );
 }
