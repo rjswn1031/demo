@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
-import Map from './Map'
+//import { useSelector } from 'react-redux'
 
+import Map from './Map'
 import AreaButton from './AreaButton'
 import ParkingItem from './ParkingItem'
 
@@ -16,9 +17,13 @@ function Main(props) {
         '중구',
     ];
 
+    //const str = useSelector((store)=> store.total.key);
+
     const parkingList = [];
     const parkingListUpdate = [];
 
+    //useEffect 컴포넌트 업데이트 시 계속 불러짐
+    //정리 필요
     useEffect(()=>{
         fetch('http://localhost:8080/getParkingList')
         .then(res => res.json())
