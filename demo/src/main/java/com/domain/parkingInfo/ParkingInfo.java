@@ -18,4 +18,7 @@ public class ParkingInfo {
     private String prkplceType;         //주차장 노상/노외/부설
     private String lnmAdr;              //주차장 주소
     private String parkingChrgeInfo;    //주차장 요금 지불 여부 무료/유료
+
+    private double lon;                 //경도
+    private double lat;                 //위도
 }

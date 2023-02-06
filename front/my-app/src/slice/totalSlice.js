@@ -3,10 +3,15 @@ import { createSlice } from '@reduxjs/toolkit'
 export const totalSlice = createSlice({
     name: 'test',
     initialState: {
-        key: '나의 키',
+      selectedParking: '12',
         //count: 0
     },
     reducers: {
+      changeSelectedParking: (state, action) => {
+        console.log(action)
+        console.log(12345)
+        state.selectedParking = action.payload
+      }
         /* increment: state => {
             state.count += 1
           },
@@ -20,5 +25,6 @@ export const totalSlice = createSlice({
 })
 
 //export const { increment, decrement, incrementByAmount } = totalSlice.actions
+export const { changeSelectedParking } = totalSlice.actions
 
 export default totalSlice.reducer
