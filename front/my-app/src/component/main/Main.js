@@ -6,7 +6,6 @@ import AreaButton from './AreaButton'
 import ParkingItem from './ParkingItem'
 
 import '../../css/main.css'
-import { changeSelectedParking } from '../../slice/totalSlice'
 
 function Main(props) {
     const areaList = [
@@ -38,17 +37,10 @@ function Main(props) {
     const [parks, setParks] = useState(parkingList);
     const [parksUpdate, setParksUpdate] = useState(parkingListUpdate);
 
-    const abc = useSelector(state => state.total.selectedParking);
-    const bbb = connect()
-    
     const areaBtnClick = (idx) => {
         let addrs = parks.filter(x => x.lnmAdr.indexOf(areaList[idx]) !== -1);
         setOnIdx(idx);
         setParksUpdate(idx === 0 ? parks : addrs);
-
-        
-        console.log(abc)
-        bbb(changeSelectedParking)
     }
 
     return (

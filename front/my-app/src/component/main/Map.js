@@ -1,6 +1,9 @@
 import { React } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { GoogleMap, useJsApiLoader, MarkerClusterer, Marker } from '@react-google-maps/api';
+
+import { changeParkCode } from '../../slice/totalSlice'
 
 import '../../css/main.css'
 
@@ -9,6 +12,8 @@ Map.propTypes = {
 };
 
 function Map(props) {
+    const dispatch = useDispatch();
+
     const containerStyle = {
         width: '100%',
         height: '100%'
@@ -23,7 +28,9 @@ function Map(props) {
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: process.env.REACT_APP_GOOGLEMAP_API_KEY
-    })
+    });
+
+
     
     /* const [map, setMap] = React.useState(null)
 
@@ -46,6 +53,7 @@ function Map(props) {
 
     const onMarkerCilck = (i) => {
         console.log(i)
+        dispatch(changeParkCode(i))
     }
     //===================================================================
 
@@ -67,7 +75,7 @@ function Map(props) {
                         key={park.prkplceNo} 
                         position={{ lat: park.lat, lng: park.lon }} 
                         clusterer={clusterer}
-                        onClick= {() => { onMarkerCilck(park.prkplceNo) }}
+                        onClick={() => { onMarkerCilck(park.prkplceNo) }}
                         />
                 ))
             }

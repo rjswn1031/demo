@@ -51,6 +51,10 @@
 #detailContainer table {
     width: 100%;
 }
+#detailContainer tr.on {
+    color: #fff;
+    background-color: #303a44;
+}
 #detailContainer th {
     padding: 1rem 0;
     background-color: #eef2f7;
@@ -60,5 +64,6 @@
     padding: 1rem 0;
     font-size: 1.1rem;
     text-align: center;
+    vertical-align: middle;
     border-bottom: 1px solid #dee2e6;
 }

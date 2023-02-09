@@ -1,16 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export const totalSlice = createSlice({
-    name: 'test',
+    name: 'total',
     initialState: {
-      selectedParking: '12',
-        //count: 0
+      parkCode: '',
     },
     reducers: {
-      changeSelectedParking: (state, action) => {
-        console.log(action)
-        console.log(12345)
-        state.selectedParking = action.payload
+      changeParkCode: (state, action) => {
+        state.parkCode = action.payload
       }
         /* increment: state => {
             state.count += 1
@@ -25,6 +22,6 @@ export const totalSlice = createSlice({
 })
 
 //export const { increment, decrement, incrementByAmount } = totalSlice.actions
-export const { changeSelectedParking } = totalSlice.actions
+export const { changeParkCode } = totalSlice.actions
 
 export default totalSlice.reducer
