@@ -60,27 +60,29 @@ function Map(props) {
       
 
     return isLoaded ? (
-        <GoogleMap
-            mapContainerStyle={containerStyle}
-            mapTypeId = 'satellite'
-            center={center}
-            zoom={13}
-            //onLoad={onLoad}
-            //onUnmount={onUnmount}
-        >
-            <MarkerClusterer options={options}>
-            {(clusterer) =>
-                props.parkings.map((park) => (
-                    <Marker 
-                        key={park.prkplceNo} 
-                        position={{ lat: park.lat, lng: park.lon }} 
-                        clusterer={clusterer}
-                        onClick={() => { onMarkerCilck(park.prkplceNo) }}
-                        />
-                ))
-            }
-            </MarkerClusterer>
-        </GoogleMap>
+        <div className='card'>
+            <GoogleMap
+                mapContainerStyle={containerStyle}
+                mapTypeId = 'satellite'
+                center={center}
+                zoom={13}
+                //onLoad={onLoad}
+                //onUnmount={onUnmount}
+            >
+                <MarkerClusterer options={options}>
+                {(clusterer) =>
+                    props.parkings.map((park) => (
+                        <Marker 
+                            key={park.prkplceNo} 
+                            position={{ lat: park.lat, lng: park.lon }} 
+                            clusterer={clusterer}
+                            onClick={() => { onMarkerCilck(park.prkplceNo) }}
+                            />
+                    ))
+                }
+                </MarkerClusterer>
+            </GoogleMap>
+        </div>
     ) : <></>
 }
 

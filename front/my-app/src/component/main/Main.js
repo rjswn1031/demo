@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import { useSelector, useDispatch, connect } from 'react-redux'
 
 import Map from './Map'
 import AreaButton from './AreaButton'
 import ParkingItem from './ParkingItem'
+import Search from './option/Search'
 
 import '../../css/main.css'
 
@@ -20,6 +20,7 @@ function Main(props) {
 
     const parkingList = [];
     const parkingListUpdate = [];
+    let searchCategoryType = {'se':null, 'plType':null, 'chrge':null};
 
     //useEffect 컴포넌트 업데이트 시 계속 불러짐
     //정리 필요
@@ -29,11 +30,16 @@ function Main(props) {
         .then(result => { 
             setParks(result); 
             setParksUpdate(result);
+            //prkplceSe prkplceType parkingChrgeInfo
+            searchCategoryType.se = [...new Set(result.map(x=>x.prkplceSe))];
+            searchCategoryType.plType = [...new Set(result.map(x=>x.prkplceType))];
+            searchCategoryType.chrge = [...new Set(result.map(x=>x.parkingChrgeInfo))];
         })
     }, [])
 
     const [onIdx, setOnIdx] = useState(0);
     const [areas] = useState(areaList);
+    const [ctgType] = useState(searchCategoryType)
     const [parks, setParks] = useState(parkingList);
     const [parksUpdate, setParksUpdate] = useState(parkingListUpdate);
 
@@ -46,13 +52,19 @@ function Main(props) {
     return (
         <div id="mainContainer">
             <Map parkings={parks} />
-            <div id='typeContainer' className='card'>
-                <p className='cardTitle'>지역선택</p>
-                <ul>
-                    { areas.map((area, idx) => 
-                        <AreaButton key={area} onIdx={onIdx === idx ? 'on' : ''} title={area} btnClick={()=>{areaBtnClick(idx)}} />) 
-                    }
-                </ul>
+            <div id='optionContainer'>
+                <div id='optSelectContainer' className='card'>
+                    <p className='cardTitle'>지역선택</p>
+                    <ul>
+                        { areas.map((area, idx) => 
+                            <AreaButton key={area} onIdx={onIdx === idx ? 'on' : ''} title={area} btnClick={()=>{areaBtnClick(idx)}} />) 
+                        }
+                    </ul>
+                </div>
+                <div id='optSearchContainer' className='card'>
+                    <p className='cardTitle'>검색</p>
+                    <Search ctgType={ctgType}></Search>
+                </div>
             </div>
             <div id='detailContainer' className='card'>
                 <p className='cardTitle'>상세보기</p>
