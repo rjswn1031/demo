@@ -29,8 +29,9 @@
 #typeContainer ul li.on,
 #typeContainer ul li:hover { color: #fff; background-color: rgb(48,58,68); }
 
+#detailContainer { display: flex; flex-direction: column; height: 100%; }
 #detailContainer #tableHeadWrap { padding-right: 0.5rem; }
-#detailContainer #tableBodyWrap { height: 67rem; padding-right: 0.5rem; overflow-y: scroll; }
+#detailContainer #tableBodyWrap { /* height: 67rem; */ padding-right: 0.5rem; overflow-y: scroll; }
 
 #detailContainer #tableHeadWrap tr th:nth-child(1),
 #detailContainer #tableBodyWrap tr td:nth-child(1), 
