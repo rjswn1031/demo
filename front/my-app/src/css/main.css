@@ -15,6 +15,7 @@
 #mainContainer > div > p { /* padding: 1.7rem 2rem; */ /* font-size: 1.3rem; */ }
 
 #optionContainer { display: flex; flex-direction: column; align-self: start; height: 100%; }
+#optionContainer > div { flex: 1 0 0; }
 #optionContainer #optSelectContainer ul li {
     display: flex;
     align-items: center;
@@ -28,6 +29,8 @@
 }
 #optionContainer #optSelectContainer ul li.on,
 #optionContainer #optSelectContainer ul li:hover { color: #fff; background-color: rgb(48,58,68); }
+
+#optionContainer #optSearchContainer input[type="checkbox"] { margin-right: 1rem; }
 
 #detailContainer { display: flex; flex-direction: column; /* height: 100%; */ }
 #detailContainer #tableHeadWrap { padding-right: 0.5rem; }

@@ -1,5 +1,9 @@
 import { Route, Routes } from 'react-router-dom'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+/* import {  } from '@fortawesome/free-regular-svg-icons' */
+
 import './App.css';
 import { Reset } from 'styled-reset'
 
@@ -12,6 +16,8 @@ import Menu4 from './component/menu4';
 import Menu5 from './component/menu5';
 
 function App() {
+  library.add(fas)
+
   return (
     <div className="App">
       <Reset />

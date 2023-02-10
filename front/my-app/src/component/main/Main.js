@@ -30,16 +30,20 @@ function Main(props) {
         .then(result => { 
             setParks(result); 
             setParksUpdate(result);
+
             //prkplceSe prkplceType parkingChrgeInfo
-            searchCategoryType.se = [...new Set(result.map(x=>x.prkplceSe))];
-            searchCategoryType.plType = [...new Set(result.map(x=>x.prkplceType))];
-            searchCategoryType.chrge = [...new Set(result.map(x=>x.parkingChrgeInfo))];
+            let optionObj = {};
+            optionObj.se = [...new Set(result.map(x=>x.prkplceSe))];
+            optionObj.plType = [...new Set(result.map(x=>x.prkplceType))];
+            optionObj.chrge = [...new Set(result.map(x=>x.parkingChrgeInfo))];
+
+            setCtgType(optionObj);
         })
     }, [])
 
     const [onIdx, setOnIdx] = useState(0);
     const [areas] = useState(areaList);
-    const [ctgType] = useState(searchCategoryType)
+    const [ctgType, setCtgType] = useState({})
     const [parks, setParks] = useState(parkingList);
     const [parksUpdate, setParksUpdate] = useState(parkingListUpdate);
 
@@ -64,6 +68,7 @@ function Main(props) {
                 <div id='optSearchContainer' className='card'>
                     <p className='cardTitle'>검색</p>
                     <Search ctgType={ctgType}></Search>
+                    <button>검색</button>
                 </div>
             </div>
             <div id='detailContainer' className='card'>
