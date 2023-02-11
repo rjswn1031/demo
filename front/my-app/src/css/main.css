@@ -30,7 +30,12 @@
 #optionContainer #optSelectContainer ul li.on,
 #optionContainer #optSelectContainer ul li:hover { color: #fff; background-color: rgb(48,58,68); }
 
-#optionContainer #optSearchContainer input[type="checkbox"] { margin-right: 1rem; }
+#optionContainer #optSearchContainer li { margin-bottom: 1.5rem; font-size: 1.2rem; }
+#optionContainer #optSearchContainer input[type="checkbox"] { display: none; }
+#optionContainer #optSearchContainer label { margin-left: 1rem; }
+#optionContainer #optSearchContainer select { float: right; width: 6rem; height: 2rem; text-align: center; border: 1px solid #adadad; border-radius: 0.3rem; }
+#optionContainer #optSearchContainer input[type="text"] { width: 100%; height: 2rem; margin-top: 1rem; }
+#optionContainer #optSearchContainer button { float: right; padding: .7rem 1.7rem; background-color: #303a44; color: #fff; border-radius: .3rem; cursor: pointer; }
 
 #detailContainer { display: flex; flex-direction: column; /* height: 100%; */ }
 #detailContainer #tableHeadWrap { padding-right: 0.5rem; }

@@ -37,21 +37,51 @@ function Main(props) {
             optionObj.plType = [...new Set(result.map(x=>x.prkplceType))];
             optionObj.chrge = [...new Set(result.map(x=>x.parkingChrgeInfo))];
 
+            setSearchOption({...searchOption, se: optionObj.se[0], plType: optionObj.plType[0], chrge: optionObj.chrge[0]})
             setCtgType(optionObj);
         })
     }, [])
+
+    const clickAreaBtn = (idx) => {
+        let addrs = parks.filter(x => x.lnmAdr.indexOf(areaList[idx]) !== -1);
+        setOnIdx(idx);
+        setParksUpdate(idx === 0 ? parks : addrs);
+    }
+    
+    const searchBtnClickHandler = () => {
+        let addrs = parks.filter(x => x.lnmAdr.indexOf(areaList[onIdx]) !== -1);
+        setParksUpdate(onIdx === 0 ? parks : addrs);
+
+        console.log(addrs)
+
+        Object.keys(stateCheckBox).forEach((key) => {
+            if(stateCheckBox[key]) {
+                console.log(key)
+                //addrs.filter(x => x.searchOption[key])
+            }
+        });
+    }
 
     const [onIdx, setOnIdx] = useState(0);
     const [areas] = useState(areaList);
     const [ctgType, setCtgType] = useState({})
     const [parks, setParks] = useState(parkingList);
     const [parksUpdate, setParksUpdate] = useState(parkingListUpdate);
+    const [stateCheckBox, setStateCheckBox] = useState({
+        se: false,
+        plType: false,
+        chrgeL: false,
+        plName: false,
+        addr: false
+    });
 
-    const areaBtnClick = (idx) => {
-        let addrs = parks.filter(x => x.lnmAdr.indexOf(areaList[idx]) !== -1);
-        setOnIdx(idx);
-        setParksUpdate(idx === 0 ? parks : addrs);
-    }
+    const [searchOption, setSearchOption] = useState({
+        se: 0,
+        plType: 0,
+        chrge: 0,
+        plName: '',
+        addr: ''
+    });
 
     return (
         <div id="mainContainer">
@@ -61,14 +91,14 @@ function Main(props) {
                     <p className='cardTitle'>지역선택</p>
                     <ul>
                         { areas.map((area, idx) => 
-                            <AreaButton key={area} onIdx={onIdx === idx ? 'on' : ''} title={area} btnClick={()=>{areaBtnClick(idx)}} />) 
+                            <AreaButton key={area} onIdx={onIdx === idx ? 'on' : ''} title={area} btnClick={()=>{clickAreaBtn(idx)}} />) 
                         }
                     </ul>
                 </div>
                 <div id='optSearchContainer' className='card'>
                     <p className='cardTitle'>검색</p>
-                    <Search ctgType={ctgType}></Search>
-                    <button>검색</button>
+                    <Search ctgType={ctgType} stateCheckBox={stateCheckBox} searchOption={searchOption} setStateCheckBox={setStateCheckBox} setSearchOption={setSearchOption}></Search>
+                    <button onClick={()=>{searchBtnClickHandler()}}>검색</button>
                 </div>
             </div>
             <div id='detailContainer' className='card'>
