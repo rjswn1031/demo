@@ -20,7 +20,6 @@ function Main(props) {
 
     const parkingList = [];
     const parkingListUpdate = [];
-    let searchCategoryType = {'se':null, 'plType':null, 'chrge':null};
 
     //useEffect 컴포넌트 업데이트 시 계속 불러짐
     //정리 필요
@@ -49,17 +48,29 @@ function Main(props) {
     }
     
     const searchBtnClickHandler = () => {
-        let addrs = parks.filter(x => x.lnmAdr.indexOf(areaList[onIdx]) !== -1);
-        setParksUpdate(onIdx === 0 ? parks : addrs);
+        let addrs = onIdx === 0 ? parks : parks.filter(x => x.lnmAdr.indexOf(areaList[onIdx]) !== -1);
+        //setParksUpdate(onIdx === 0 ? parks : addrs);
 
-        console.log(addrs)
+        //console.log(addrs)
 
         Object.keys(stateCheckBox).forEach((key) => {
             if(stateCheckBox[key]) {
                 console.log(key)
-                //addrs.filter(x => x.searchOption[key])
+                let parseKey = '';
+
+                switch (key) {
+                    case 'se': parseKey = 'prkplceSe'; break;
+                    case 'plType': parseKey = 'prkplceType'; break;
+                    case 'chrge': parseKey = 'parkingChrgeInfo'; break;
+                    case 'plName': parseKey = 'prkplceNm'; break;
+                    case 'addr': parseKey = 'lnmAdr'; break;
+                    default: parseKey = 'lnmAdr'; break;
+                }
+                addrs = addrs.filter(x => x[parseKey].indexOf(searchOption[key]) !== -1);
             }
         });
+        
+        setParksUpdate(addrs);
     }
 
     const [onIdx, setOnIdx] = useState(0);
