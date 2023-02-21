@@ -8,17 +8,19 @@ function Login(props) {
             <div id='loginContainer'>
                 <p>Login</p>
                 <table>
-                    <tr>
-                        <td>ID :</td>
-                        <td><input type={'text'}></input></td>
-                    </tr>
-                    <tr>
-                        <td>PASSWORD :</td>
-                        <td><input type={'password'}></input></td>
-                    </tr>
-                    <tr>
-                        <td colSpan={2}><button>LOGIN</button></td> 
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td>ID :</td>
+                            <td><input type={'text'}></input></td>
+                        </tr>
+                        <tr>
+                            <td>PASSWORD :</td>
+                            <td><input type={'password'}></input></td>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}><button>LOGIN</button></td> 
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
