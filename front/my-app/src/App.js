@@ -7,6 +7,9 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import './App.css';
 import { Reset } from 'styled-reset'
 
+import Login from './component/Login';
+import MainPage from './component/MainPage';
+
 import Header from './component/header/Header';
 import Main from './component/main/Main';
 import Menu1 from './component/menu1';
@@ -21,15 +24,18 @@ function App() {
   return (
     <div className="App">
       <Reset />
-      <Header />
       <Routes>
-        <Route path='/' element={<Main/>}></Route>
-        <Route path='/menu1' element={<Menu1/>}></Route>
-        <Route path='/menu2' element={<Menu2/>}></Route>
-        <Route path='/menu3' element={<Menu3/>}></Route>
-        <Route path='/menu4' element={<Menu4/>}></Route>
-        <Route path='/menu5' element={<Menu5/>}></Route>
+        <Route path='login' element={<Login />}></Route>
+        <Route path='main/*'  element={<MainPage />}>
+          <Route path='main' element={<Main/>}></Route>
+          <Route path='menu1' element={<Menu1/>}></Route>
+          <Route path='menu2' element={<Menu2/>}></Route>
+          <Route path='menu3' element={<Menu3/>}></Route>
+          <Route path='menu4' element={<Menu4/>}></Route>
+          <Route path='menu5' element={<Menu5/>}></Route>
+        </Route>
       </Routes>
+      
     </div>
   );
 }

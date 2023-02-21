@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import SearchOption from './SearchOption';
+
 Search.propTypes = {
     ctgType: PropTypes.object,
+    searchTitle: PropTypes.object,
     stateCheckBox: PropTypes.object,
     searchOption: PropTypes.object,
     setStateCheckBox: PropTypes.func,
@@ -11,24 +14,6 @@ Search.propTypes = {
 }
 
 function Search(props) {
-
-    /*
-    const [stateCheckBox, setStateCheckBox] = useState({
-        se: false,
-        plType: false,
-        chrgeL: false,
-        plName: false,
-        addr: false
-    });
-
-    const [searchOption, setSearchOption] = useState({
-        se: 0,
-        plType: 0,
-        chrgeL: 0,
-        plName: '',
-        addr: ''
-    });
-    */
 
     const optionChangeHandler = (e) => {
         const optionObj = {...props.searchOption};
@@ -54,7 +39,7 @@ function Search(props) {
      */
     return (
         <ul>
-            <li>
+            {/* <li>
                 <input id='chk-se' type={'checkbox'} onChange={(e)=>{checkboxChangeHandler(e)}} />
                 <FontAwesomeIcon icon={`fa-solid ${props.stateCheckBox.se ? 'fa-square-check' : 'fa-square'}`}/>
                 <label htmlFor="chk-se">구분</label>
@@ -89,7 +74,8 @@ function Search(props) {
                 <FontAwesomeIcon icon={`fa-solid ${props.stateCheckBox.addr ? 'fa-square-check' : 'fa-square'}`}/>
                 <label htmlFor="chk-addr">주소</label><br/>
                 <input type={'text'} data-type="addr" onChange={(e)=>optionChangeHandler(e)} disabled={props.stateCheckBox.addr ? false : true}></input>
-            </li>
+            </li> */}
+            {Object.keys(props.searchTitle).map(key=><SearchOption key={key} optType={key} searchTitle={props.searchTitle} stateCheckBox={props.stateCheckBox} ctgType={props.ctgType} optionChangeHandler={optionChangeHandler} checkboxChangeHandler={checkboxChangeHandler}/>)}
         </ul>
     );
 }

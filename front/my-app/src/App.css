@@ -1,8 +1,8 @@
 html { font-size: .625vw !important; }
 
-.App { display: flex; flex-direction: column; width: 100vw; height: 100vh; font-family: "NanumSquare"; }
-.App div { box-sizing: border-box; }
-.App > div:not(.header) { height: calc(100% - 6rem); padding: 1rem 1.5rem; background-color: rgb(243,245,248); }
+.App { font-family: "NanumSquare"; }
+/* .App div { box-sizing: border-box; }
+.App > div:not(.header) { height: calc(100% - 6rem); padding: 1rem 1.5rem; background-color: rgb(243,245,248); } */
 
 a:link, 
 a:visited { color: #fff; text-decoration: none; }
@@ -10,6 +10,9 @@ a:visited { color: #fff; text-decoration: none; }
 .card { margin: 1rem; padding: 1.7rem 2rem; background-color: #fff; border-radius: 0.5rem; }
 .cardTitle { margin-bottom: 2rem; font-size: 1.3rem; }
 
+#mainPageContainer { display: flex; flex-direction: column; width: 100vw; height: 100vh; font-family: "NanumSquare"; }
+#mainPageContainer div { box-sizing: border-box; }
+#mainPageContainer > div:not(.header) { height: calc(100% - 6rem); padding: 1rem 1.5rem; background-color: rgb(243,245,248); }
 /* =========================================================================== */
 /* font */
 

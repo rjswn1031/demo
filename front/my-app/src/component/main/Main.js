@@ -78,10 +78,17 @@ function Main(props) {
     const [ctgType, setCtgType] = useState({})
     const [parks, setParks] = useState(parkingList);
     const [parksUpdate, setParksUpdate] = useState(parkingListUpdate);
+    const [searchTitle, setSearchTitle] = useState({
+        se: '구분',
+        plType: '형태구분',
+        chrge: '결제여부',
+        plName: '주차장명',
+        addr: '주소'
+    })
     const [stateCheckBox, setStateCheckBox] = useState({
         se: false,
         plType: false,
-        chrgeL: false,
+        chrge: false,
         plName: false,
         addr: false
     });
@@ -108,7 +115,7 @@ function Main(props) {
                 </div>
                 <div id='optSearchContainer' className='card'>
                     <p className='cardTitle'>검색</p>
-                    <Search ctgType={ctgType} stateCheckBox={stateCheckBox} searchOption={searchOption} setStateCheckBox={setStateCheckBox} setSearchOption={setSearchOption}></Search>
+                    <Search ctgType={ctgType} searchTitle={searchTitle} stateCheckBox={stateCheckBox} searchOption={searchOption} setStateCheckBox={setStateCheckBox} setSearchOption={setSearchOption}></Search>
                     <button onClick={()=>{searchBtnClickHandler()}}>검색</button>
                 </div>
             </div>
