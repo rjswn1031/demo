@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import totalReducer from './slice/totalSlice'
+import loginReducer from './slice/loginSlice'
 
 export default configureStore({
     reducer: {
-        total: totalReducer
+        total: totalReducer,
+        login: loginReducer
     }
 })
 
