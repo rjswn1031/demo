@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import BoardContent from './BoardContent';
-import Button from '../Button';
+import Dropdown from '../common/Dropdown';
 
 import '../../css/board.css'
 
@@ -39,6 +39,7 @@ function Board(props) {
     const clickHandler = () => {
         console.log(123);
     }
+    
     //====================================================================================================================================
 
 
@@ -47,23 +48,23 @@ function Board(props) {
     return (
         <div id='boardContainer'>
             <div id='boardSearchContainer'>
-                <select>
-                    {optionLists.map((x, idx)=><option key={idx} value={idx}>{x}</option>)}
-                </select>
-                <input type={'text'} placeholder="검색어를 입력해주세요."></input>
-                <button>검색</button>
-                <Button title="클릭" clickHandler={clickHandler}/>
+                <Dropdown list={ optionLists.map((x,i)=>{return {"value":i, "title":x} })} checkSelected={()=>{}}></Dropdown> {/* [{value: 1, title:'zzz'}, {value: 2, title:'qqq'}, {value: 3, title:'www'}] */}
+                <div id='searchContainer'>
+                    <input type={'text'} placeholder="검색어를 입력해주세요."></input> {/* 20rem 3rem */}
+                    <button>검색</button>
+                </div>
             </div>
             <div id='boardContentContainer'>
                 <table>
                     <thead>
                         <tr>
-                            {boardTh.map(title => <th>{title}</th>)}
+                            {boardTh.map(title => <th key={title}>{title}</th>)}
                         </tr>
                     </thead>
                     <tbody>
                         { testContent.map(content => {
                             return <BoardContent 
+                                key={content.boardNo}
                                 boardNo={content.boardNo}
                                 boardTitle={content.boardTitle}
                                 boardRegDate={content.boardRegDate}
