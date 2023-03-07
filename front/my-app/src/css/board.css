@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
 }
-#boardContainer #boardSearchContainer { display: flex; margin-top: 10rem; }
+#boardContainer #boardSearchContainer { display: flex; margin-top: 8rem; }
 #boardContainer #boardSearchContainer #searchContainer { display: flex; margin-left: .5rem; }
 #boardContainer #boardSearchContainer #searchContainer > input {
     width: 30rem;
@@ -25,6 +25,8 @@
     cursor: pointer;
 }
 
-#boardContainer #boardContentContainer {
-    margin-top: 7rem;
-}
+#boardContainer #boardContentContainer { margin-top: 5rem; }
+#boardContainer #boardContentContainer table { width: 90rem; border-top: 2px solid #303a44; }
+#boardContainer #boardContentContainer table tr th { padding: 1.5rem 0rem; background-color: #dbe0e7; }
+#boardContainer #boardContentContainer table tr td { padding: 1.3rem 0rem; text-align: center; border-bottom: 1px solid #d3d3d3; }
+#boardContainer #boardContentContainer table tr td:nth-child(4) { text-align: start; }

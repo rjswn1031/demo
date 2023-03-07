@@ -56,13 +56,20 @@ function Board(props) {
             </div>
             <div id='boardContentContainer'>
                 <table>
+                    <colgroup>
+                        <col width={"8%"} />
+                        <col width={"8%"} />
+                        <col width={"16%"} />
+                        <col width={"48%"} />
+                        <col width={"20%"} />
+                    </colgroup>
                     <thead>
                         <tr>
                             {boardTh.map(title => <th key={title}>{title}</th>)}
                         </tr>
                     </thead>
                     <tbody>
-                        { testContent.map(content => {
+                        { testContent.filter(content => content.boardNo < 10).map(content => {
                             return <BoardContent 
                                 key={content.boardNo}
                                 boardNo={content.boardNo}
