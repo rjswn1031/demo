@@ -1,0 +1,12 @@
+#boardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#boardContainer #boardSearchContainer {
+    margin-top: 10rem;
+}
+
+#boardContainer #boardContentContainer {
+    margin-top: 7rem;
+}

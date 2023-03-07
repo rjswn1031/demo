@@ -7,7 +7,7 @@ import '../../css/header.css'
 
 const Header = () => {
     const menuList = [
-        {title: 'menu1', url: '/main/menu1'},
+        {title: '건의 게시판', url: '/main/board'},
         {title: 'menu2', url: '/main/menu2'},
         {title: 'menu3', url: '/main/menu3'},
         {title: 'menu4', url: '/main/menu4'},

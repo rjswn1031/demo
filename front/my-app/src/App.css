@@ -1,6 +1,7 @@
 html { font-size: .625vw !important; }
 
 .App { font-family: "NanumSquare"; }
+.App * { box-sizing: border-box; }
 /* .App div { box-sizing: border-box; }
 .App > div:not(.header) { height: calc(100% - 6rem); padding: 1rem 1.5rem; background-color: rgb(243,245,248); } */
 

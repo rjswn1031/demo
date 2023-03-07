@@ -12,7 +12,7 @@ import MainPage from './component/MainPage';
 
 import Header from './component/header/Header';
 import Main from './component/main/Main';
-import Menu1 from './component/menu1';
+import Board from './component/board/Board';
 import Menu2 from './component/menu2';
 import Menu3 from './component/menu3';
 import Menu4 from './component/menu4';
@@ -28,7 +28,7 @@ function App() {
         <Route path='login' element={<Login />}></Route>
         <Route path='main/*'  element={<MainPage />}>
           <Route path='main' element={<Main/>}></Route>
-          <Route path='menu1' element={<Menu1/>}></Route>
+          <Route path='board' element={<Board/>}></Route>
           <Route path='menu2' element={<Menu2/>}></Route>
           <Route path='menu3' element={<Menu3/>}></Route>
           <Route path='menu4' element={<Menu4/>}></Route>
