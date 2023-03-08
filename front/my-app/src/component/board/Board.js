@@ -1,6 +1,8 @@
 import { React, useState } from 'react';
+
 import BoardContent from './BoardContent';
 import Dropdown from '../common/Dropdown';
+import Pagination from '../common/Pagination';
 
 import '../../css/board.css'
 
@@ -42,9 +44,14 @@ function Board(props) {
     
     //====================================================================================================================================
 
-
-
     const [boardTh, setBoardTh] = useState([...boardHeader]);
+    const [nowPage, setNowPage] = useState(0);
+
+    const chkSelectNum = (no) => {
+        console.log(no);
+        setNowPage(no);
+    }
+
     return (
         <div id='boardContainer'>
             <div id='boardSearchContainer'>
@@ -81,7 +88,9 @@ function Board(props) {
                         })}
                     </tbody>
                 </table>
-                <div id='boardPageContainer'></div>
+                <div id='boardPageContainer'>
+                    <Pagination totalCnt={212} chkSelectNum={chkSelectNum}/>
+                </div>
             </div>
         </div>
     );
