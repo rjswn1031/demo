@@ -1,0 +1,12 @@
+create table suggestion_board (
+	board_no int primary key auto_increment,
+	board_title varchar(40) not null,
+	board_writer varchar(40) not null,
+	board_reg_date varchar(40) not null,
+	board_mod_date varchar(40) default null,
+	board_del_yn boolean default false,
+	board_content varchar(200) not null,
+	PRKPLCE_NO varchar(40) not null,
+	board_secret boolean default false,
+	board_category varchar(40) not null
+);
