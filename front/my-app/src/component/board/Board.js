@@ -1,10 +1,11 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 
 import BoardContent from './BoardContent';
 import Dropdown from '../common/Dropdown';
 import Pagination from '../common/Pagination';
 
 import '../../css/board.css'
+import axios from 'axios';
 
 function Board(props) {
     const boardHeader = ['번호', '항목', '주차장명', '제목', '등록일시'];
@@ -38,18 +39,37 @@ function Board(props) {
     
     const optionList = ['시설', '비용', '관리'];
     const [optionLists, setOptionLists] = useState([...optionList]);
-    const clickHandler = () => {
+    const clickHandler = async () => {
         console.log(123);
     }
     
     //====================================================================================================================================
+    useEffect(() => {
+        fetch('http://localhost:8081/board/getBoardTotalCnt')
+        .then(r=>r.json())
+        .then(cnt=>setTotalCnt(parseInt(cnt)));
 
+        axios({
+            method: 'get',
+            url: 'http://localhost:8081/board/getPagingBoardData?nowPage=' + 0,
+        }).then((r)=>{
+            setBoardList([...r.data.content]);
+        });
+    },[]);
+
+    const [totalCnt, setTotalCnt] = useState(0);
     const [boardTh, setBoardTh] = useState([...boardHeader]);
     const [nowPage, setNowPage] = useState(0);
+    const [boardList, setBoardList] = useState([]);
 
     const chkSelectNum = (no) => {
-        console.log(no);
         setNowPage(no);
+        axios({
+            method: 'get',
+            url: 'http://localhost:8081/board/getPagingBoardData?nowPage=' + no,
+        }).then((r)=>{
+            setBoardList([...r.data.content]);
+        });
     }
 
     return (
@@ -76,20 +96,20 @@ function Board(props) {
                         </tr>
                     </thead>
                     <tbody>
-                        { testContent.filter(content => content.boardNo < 10).map(content => {
+                        { boardList.map(content => {
                             return <BoardContent 
                                 key={content.boardNo}
                                 boardNo={content.boardNo}
                                 boardTitle={content.boardTitle}
                                 boardRegDate={content.boardRegDate}
                                 boardCategory={content.boardCategory}
-                                prkplceNm={content.prkplceNm}
+                                prkplceNm={content.prkplceNo}
                             />
                         })}
                     </tbody>
                 </table>
                 <div id='boardPageContainer'>
-                    <Pagination totalCnt={212} chkSelectNum={chkSelectNum}/>
+                    <Pagination totalCnt={totalCnt} chkSelectNum={chkSelectNum}/>
                 </div>
             </div>
         </div>
