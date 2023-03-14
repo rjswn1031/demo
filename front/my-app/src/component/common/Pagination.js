@@ -1,6 +1,8 @@
 import { React, useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 Pagination.propTypes = {
     totalCnt: PropTypes.number,
     chkSelectNum: PropTypes.func
@@ -26,6 +28,7 @@ function Pagination(props) {
     const btnCnt = Math.ceil(props.totalCnt / listPerPage)//props.totalCnt % listPerPage === 0 ? props.totalCnt / listPerPage : props.totalCnt / listPerPage + 1;
 
     const [nowPageNum, setNowPageNum] = useState(0);
+    const [selectPageNum, setSelectPageNum] = useState(0);
 
     const setPageBtn = () => {
         const retArr = [];
@@ -33,7 +36,12 @@ function Pagination(props) {
         const maxBtnCtn = maxPageNum * nowPageNum + maxPageNum;
         for(let i=0; i<btnCnt; i++) {
             if(i >= minBtnCtn && i < maxBtnCtn) {
-                retArr.push(<button key={i} onClick={()=>{props.chkSelectNum(i)}}>{i+1}</button>)
+                retArr.push(
+                    <button className={selectPageNum === i ? 'on' : ''} key={i} onClick={()=>{
+                        props.chkSelectNum(i);
+                        setSelectPageNum(i);
+                    }}>{i+1}</button>
+                )
             }
         }
         return retArr;
@@ -50,9 +58,9 @@ function Pagination(props) {
 
     return (
         <div className='pageContainer'>
-            <button onClick={()=>{movePostPage()}}>{'<'}</button>
+            <button onClick={()=>{movePostPage()}}><FontAwesomeIcon icon="fa-solid fa-caret-left" /></button>
             {setPageBtn()}
-            <button onClick={()=>{movePrePage()}}>{'>'}</button>
+            <button onClick={()=>{movePrePage()}}><FontAwesomeIcon icon="fa-solid fa-caret-right" /></button>
         </div>
     );
 }
