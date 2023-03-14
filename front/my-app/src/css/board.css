@@ -25,7 +25,20 @@
     cursor: pointer;
 }
 
-#boardContainer #boardContentContainer { margin-top: 5rem; }
+#boardContainer #boardContentContainer { display: flex; flex-direction: column; margin-top: 5rem; }
+
+#boardContainer #boardContentContainer #boardWriteBtn {
+    align-self: flex-end;
+    margin-bottom: 0.3rem;
+    padding: 0.4rem 0.7rem;
+    font-size: .9rem;
+    color: #fff;
+    background-color: #303a44;
+    border: 1px solid #303a44;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+
 #boardContainer #boardContentContainer table { width: 90rem; border-top: 2px solid #303a44; }
 #boardContainer #boardContentContainer table tr th { padding: 1.5rem 0rem; background-color: #dbe0e7; }
 #boardContainer #boardContentContainer table tr td { padding: 1.3rem 0rem; text-align: center; border-bottom: 1px solid #d3d3d3; }

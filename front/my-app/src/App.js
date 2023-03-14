@@ -1,16 +1,17 @@
+import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
-/* import {  } from '@fortawesome/free-regular-svg-icons' */
 
 import './App.css';
 import { Reset } from 'styled-reset'
 
+import Modal from './component/common/Modal';
+
 import Login from './component/Login';
 import MainPage from './component/MainPage';
 
-import Header from './component/header/Header';
 import Main from './component/main/Main';
 import Board from './component/board/Board';
 import Menu2 from './component/menu2';
@@ -20,6 +21,7 @@ import Menu5 from './component/menu5';
 
 function App() {
   library.add(fas)
+  const isMaskOn = useSelector(state => state.modal.isMaskOn);
 
   return (
     <div className="App">
@@ -35,7 +37,7 @@ function App() {
           <Route path='menu5' element={<Menu5/>}></Route>
         </Route>
       </Routes>
-      
+      { isMaskOn && <Modal modalTitle={'test'} /> }
     </div>
   );
 }

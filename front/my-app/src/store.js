@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit'
 
 import totalReducer from './slice/totalSlice'
 import loginReducer from './slice/loginSlice'
+import modalSlice from './slice/modalSlice'
 
 export default configureStore({
     reducer: {
         total: totalReducer,
-        login: loginReducer
+        login: loginReducer,
+        modal: modalSlice
     }
 })
 

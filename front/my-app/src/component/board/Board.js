@@ -1,11 +1,14 @@
 import { React, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import axios from 'axios';
+import { toggleMask, changeModalType } from '../../slice/modalSlice'
 
 import BoardContent from './BoardContent';
 import Dropdown from '../common/Dropdown';
 import Pagination from '../common/Pagination';
 
 import '../../css/board.css'
-import axios from 'axios';
 
 function Board(props) {
     const boardHeader = ['번호', '항목', '주차장명', '제목', '등록일시'];
@@ -39,11 +42,9 @@ function Board(props) {
     
     const optionList = ['시설', '비용', '관리'];
     const [optionLists, setOptionLists] = useState([...optionList]);
-    const clickHandler = async () => {
-        console.log(123);
-    }
     
     //====================================================================================================================================
+    const dispatch = useDispatch();
     useEffect(() => {
         fetch('http://localhost:8081/board/getBoardTotalCnt')
         .then(r=>r.json())
@@ -57,6 +58,7 @@ function Board(props) {
         });
     },[]);
 
+    //paging 관련 state
     const [totalCnt, setTotalCnt] = useState(0);
     const [boardTh, setBoardTh] = useState([...boardHeader]);
     const [nowPage, setNowPage] = useState(0);
@@ -72,6 +74,11 @@ function Board(props) {
         });
     }
 
+    const writeClickHandler = () => {
+        dispatch(toggleMask(true));
+        dispatch(changeModalType('boardWrite'));
+    }
+
     return (
         <div id='boardContainer'>
             <div id='boardSearchContainer'>
@@ -82,6 +89,7 @@ function Board(props) {
                 </div>
             </div>
             <div id='boardContentContainer'>
+                <button id='boardWriteBtn' onClick={()=>{writeClickHandler()}}><FontAwesomeIcon icon="fa-solid fa-pen-to-square" /> 글쓰기</button>
                 <table>
                     <colgroup>
                         <col width={"8%"} />

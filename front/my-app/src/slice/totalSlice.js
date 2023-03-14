@@ -3,21 +3,12 @@ import { createSlice } from '@reduxjs/toolkit'
 export const totalSlice = createSlice({
     name: 'total',
     initialState: {
-      parkCode: '',
+      parkCode: '',      //선택된 마커의 주차장 코드
     },
     reducers: {
       changeParkCode: (state, action) => {
         state.parkCode = action.payload
       }
-        /* increment: state => {
-            state.count += 1
-          },
-          decrement: state => {
-            state.count -= 1
-          },
-          incrementByAmount: (state, action) => {
-            state.count += action.payload
-          } */
     }
 })
 

@@ -1,0 +1,26 @@
+#mask { 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    position: absolute; 
+    top: 0px; 
+    width: 100vw; 
+    height: 100vh; 
+    background-color: rgb(0 0 0 / 90%); 
+    box-sizing: border-box; 
+    z-index: 50; 
+  }
+  
+  #mask .modalContainer { 
+    padding: 1.5rem;
+    background-color: #f3f5f8;
+    border-radius: 0.3rem;
+  }
+  
+  #mask .modalContainer .modalHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
