@@ -8,7 +8,7 @@ html { font-size: .625vw !important; }
 a:link, 
 a:visited { color: #fff; text-decoration: none; }
 
-.card { margin: 1rem; padding: 1.7rem 2rem; background-color: #fff; border-radius: 0.5rem; }
+.card { margin: 1rem; padding: 1.7rem 2rem; background-color: #fff; border-radius: 0.5rem; box-shadow: 1px 1px 1px 1px #e0e0e0; }
 .cardTitle { margin-bottom: 2rem; font-size: 1.3rem; }
 
 #mainPageContainer { display: flex; flex-direction: column; width: 100vw; height: 100vh; font-family: "NanumSquare"; }

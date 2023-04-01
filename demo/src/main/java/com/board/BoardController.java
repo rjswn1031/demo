@@ -50,6 +50,11 @@ public class BoardController {
     return boardService.getBoardTotalCnt();
   }
 
+  @RequestMapping("/test")
+  public List<Board> test() throws Exception {
+    return boardRepository.findAll();
+  }
+
   @RequestMapping("/insertDummyData")
   public Boolean insertDummyData() {
     Date nowDate = new Date();
@@ -73,7 +78,7 @@ public class BoardController {
       board.setBoardWriter("admin");
       board.setBoardRegDate(dtFormat.format(nowDate));
       board.setBoardContent("이것은 테스트 글들입니다. 하하하.");
-      board.setPrkplceNo("183-1-000014");
+      //board.setPrkplceNo("183-1-000014");
       board.setBoardCategory(category);
       board.setBoardSecret(false);
       board.setBoardDelYn(false);
