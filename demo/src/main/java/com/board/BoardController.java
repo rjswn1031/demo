@@ -8,15 +8,15 @@ import java.util.stream.IntStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.domain.Board.Board;
 import com.domain.Board.BoardRepository;
+import com.domain.Code.Code;
 
 import lombok.RequiredArgsConstructor;
 
@@ -41,7 +41,7 @@ public class BoardController {
   @RequestMapping("/getPagingBoardData")
   public Page<Board> getPagingBoardData(@RequestParam(name="nowPage") int nowPage) throws Exception {
     System.out.println(nowPage + "=============================================================================");
-    PageRequest pageRequest = PageRequest.of(nowPage,10);
+    PageRequest pageRequest = PageRequest.of(nowPage, 10, Sort.by("boardNo").descending());
     return boardService.getPagingList(pageRequest);
   }
 
@@ -50,9 +50,31 @@ public class BoardController {
     return boardService.getBoardTotalCnt();
   }
 
-  @RequestMapping("/test")
-  public List<Board> test() throws Exception {
-    return boardRepository.findAll();
+  @RequestMapping("/getBoardCodeList")
+  public List<Code> getBoardCodeList() throws Exception {
+    return boardService.getBoardCodeList();
+  }
+
+  @RequestMapping("/insertBoard")
+  public Boolean insertBoard(Board board) throws Exception {
+    Boolean message;
+    try {
+      boardService.insertBoard(board);
+      message = true;
+    } catch (Exception e) {
+      message = false;
+    }
+    return message;
+  }
+
+  @RequestMapping("/getBoard")
+  public Board getBoard(Board board) throws Exception {
+    Board retBoard = new Board();
+    try {
+      retBoard = boardService.getBoard(board);
+    } catch (Exception e) {
+    }
+    return retBoard;
   }
 
   @RequestMapping("/insertDummyData")

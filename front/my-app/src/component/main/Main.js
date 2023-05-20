@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Map from './Map'
 import AreaButton from './AreaButton'
@@ -7,7 +8,11 @@ import Search from './option/Search'
 
 import '../../css/main.css'
 
+import { setParkList } from '../../slice/totalSlice'
+
 function Main(props) {
+    const dispatch = useDispatch();
+    const parks = useSelector(state => state.total.parkList);
     const areaList = [
         '전체',
         '대덕구',
@@ -16,7 +21,6 @@ function Main(props) {
         '유성',
         '중구',
     ];
-
 
     const parkingList = [];
     const parkingListUpdate = [];
@@ -27,7 +31,8 @@ function Main(props) {
         fetch('http://localhost:8081/getParkingList')
         .then(res => res.json())
         .then(result => { 
-            setParks(result); 
+            dispatch(setParkList(result))
+            //setParks(result); 
             setParksUpdate(result);
 
             //prkplceSe prkplceType parkingChrgeInfo
@@ -76,7 +81,7 @@ function Main(props) {
     const [onIdx, setOnIdx] = useState(0);
     const [areas] = useState(areaList);
     const [ctgType, setCtgType] = useState({})
-    const [parks, setParks] = useState(parkingList);
+    //const [parks, setParks] = useState(parkingList);
     const [parksUpdate, setParksUpdate] = useState(parkingListUpdate);
     const [searchTitle, setSearchTitle] = useState({
         se: '구분',

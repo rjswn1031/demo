@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios';
 import { toggleMask, changeModalType } from '../../slice/modalSlice'
+import { setBoardCodeList } from '../../slice/totalSlice'
 
 import BoardContent from './BoardContent';
 import Dropdown from '../common/Dropdown';
@@ -49,14 +50,33 @@ function Board(props) {
         fetch('http://localhost:8081/board/getBoardTotalCnt')
         .then(r=>r.json())
         .then(cnt=>setTotalCnt(parseInt(cnt)));
+        //게시판 리스트 조회
+        getBoardData(0);
 
         axios({
-            method: 'get',
-            url: 'http://localhost:8081/board/getPagingBoardData?nowPage=' + 0,
+            method: 'post',
+            url: 'http://localhost:8081/board/getBoardCodeList',
         }).then((r)=>{
-            setBoardList([...r.data.content]);
+            dispatch(setBoardCodeList(r.data));
         });
+        
     },[]);
+
+    const getBoardData = (pageNo) => {
+        axios({
+            method: 'get',
+            url: 'http://localhost:8081/board/getPagingBoardData?nowPage=' + pageNo,
+        }).then((r)=>{
+            const list = [...r.data.content].map(x=>{
+                return {
+                    ...x,
+                    'boardCategory': x.code.cdNm,
+                    'prkplceNm': x.parkingInfo.prkplceNm
+                }
+            })
+            setBoardList(list);
+        });
+    }
 
     //paging 관련 state
     const [totalCnt, setTotalCnt] = useState(0);
@@ -66,17 +86,18 @@ function Board(props) {
 
     const chkSelectNum = (no) => {
         setNowPage(no);
-        axios({
-            method: 'get',
-            url: 'http://localhost:8081/board/getPagingBoardData?nowPage=' + no,
-        }).then((r)=>{
-            setBoardList([...r.data.content]);
-        });
+        getBoardData(no);
+        // axios({
+        //     method: 'get',
+        //     url: 'http://localhost:8081/board/getPagingBoardData?nowPage=' + no,
+        // }).then((r)=>{
+        //     setBoardList([...r.data.content]);
+        // });
     }
 
     const writeClickHandler = () => {
-        dispatch(toggleMask(true));
         dispatch(changeModalType('boardWrite'));
+        dispatch(toggleMask(true));
     }
 
     return (
@@ -111,7 +132,7 @@ function Board(props) {
                                 boardTitle={content.boardTitle}
                                 boardRegDate={content.boardRegDate}
                                 boardCategory={content.boardCategory}
-                                prkplceNm={content.prkplceNo}
+                                prkplceNm={content.prkplceNm}
                             />
                         })}
                     </tbody>

@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { toggleMask } from '../../slice/modalSlice'
 
 import BoardWriteModal from '../modal/BoardWriteModal';
+import BoardDetailModal from '../modal/BoardDetailModal';
 
 import '../../css/modal.css'
 
@@ -22,7 +23,10 @@ function Modal(props) {
       modalTitle = '건의 게시글 작성';
       modalContent = <BoardWriteModal></BoardWriteModal>;
       break;
-    case 'boardRead': break;
+    case 'boardDetail': 
+      modalTitle = '게시글 상세보기';
+      modalContent = <BoardDetailModal></BoardDetailModal>;
+      break;
     default: break;
   }
 

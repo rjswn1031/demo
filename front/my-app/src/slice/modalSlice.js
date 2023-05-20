@@ -5,6 +5,7 @@ export const totalSlice = createSlice({
     initialState: {
         isMaskOn: false,  //mask 표출 여부
         modalType: '',
+        modalDetailBoardNo: null
     },
     reducers: {
       toggleMask: (state, action) => {
@@ -13,10 +14,13 @@ export const totalSlice = createSlice({
       changeModalType: (state, action) => {
         state.modalType = action.payload
       },
+      setBoardDetailNo: (state, action) => {
+        state.modalDetailBoardNo = action.payload
+      }
     }
 })
 
 //export const { increment, decrement, incrementByAmount } = totalSlice.actions
-export const { toggleMask, changeModalType } = totalSlice.actions
+export const { toggleMask, changeModalType, setBoardDetailNo } = totalSlice.actions
 
 export default totalSlice.reducer
