@@ -1,0 +1,30 @@
+.header{
+    height: 50px;
+    display: flex;
+    background-color: black;
+    z-index: 1000;
+}
+
+.header_logo{
+    color: crimson;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 5px 20px;
+}
+
+.header_search{
+    display: flex;
+    align-items: center;
+    flex : 1;
+}
+
+.header_search_btn{
+    width: 30px;
+    object-fit: contain;
+}
+
+.header_search_input{
+    width: 130px;
+    height: 30px;
+}
